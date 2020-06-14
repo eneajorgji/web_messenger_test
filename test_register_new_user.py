@@ -6,12 +6,12 @@ import names
 NEW_NAME = names.get_first_name()
 
 
-class PythonOrgSearch(unittest.TestCase):
+class RegisterNewUser(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome()
 
-    def test_navigate(self):  # zmien nazwe
+    def test_register(self):
         self.driver.get('http://kmg.hcm.pl/testowanie/register.html')
         # module names is used to generate different name each time test runs
         self.driver.find_element_by_id('username').send_keys(NEW_NAME)
@@ -22,7 +22,7 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver.find_element_by_id('surname').send_keys('Surname1')
         self.driver.find_element_by_id('kodgrupy').send_keys('wsb_g2')
         self.driver.find_element_by_id('register').click()
-        assert 'Rejestracja' in self.driver.page_source
+        assert 'Rejestracja ' in self.driver.page_source
         time.sleep(5)
 
     def tearDown(self):
