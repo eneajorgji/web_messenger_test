@@ -14,10 +14,10 @@ class EditProfile(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.get('http://kmg.hcm.pl/testowanie/index.html')
+        self.driver.get('http://kmg.hcm.pl/testowanie_poprawione')
         self.driver.implicitly_wait(10)
 
-    def test_login(self):
+    def test_login_edit_profile(self):
         self.driver.find_element_by_id('userLogin').send_keys('adam442')
         self.driver.find_element_by_id('passwordLogin').send_keys('adam442')
         self.driver.find_element_by_id('login').send_keys(Keys.ENTER)
@@ -30,18 +30,21 @@ class EditProfile(unittest.TestCase):
         # time.sleep(3)
 
         self.driver.find_element_by_xpath('//img[@src="./icon_profile.png"]').click()
-        # time.sleep(3)
 
-        self.driver.element = wait.until(EC.presence_of_element_located((By.ID, 'editOSobie')))
+
+
 
         self.driver.find_element_by_id('editOSobie').click()
         self.driver.find_element_by_id('editOSobie').send_keys(
             'For the reason of test I used the module of the name, so I would be able to check whether this section has been changed ',
             NEW_NAME)
-        time.sleep(3)
+        # time.sleep(3)
 
-        self.driver.find_element_by_id('editBttn').click()
-        time.sleep(5)
+        # self.save_changes = wait_for_element('editCom', profile_div).click()
+
+        self.driver.element = wait.until(EC.presence_of_element_located((By.ID, 'editBttn')))
+        self.driver.element.click()
+
 
         assert 'Dane ' in self.driver.page_source
 

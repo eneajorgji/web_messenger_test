@@ -13,7 +13,7 @@ class RegisterNewUser(unittest.TestCase):
         self.driver.get('http://kmg.hcm.pl/testowanie/register.html')
         self.driver.implicitly_wait(10)
 
-    def test_register(self):
+    def test_register_fail(self):
         # module names is used to generate different name each time test runs
         self.driver.find_element_by_id('username').send_keys(NEW_NAME)
         self.driver.find_element_by_id('pass1').send_keys('Test123')

@@ -35,7 +35,6 @@ class SendNewMessege(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="messageInput"]').click()
         self.driver.find_element_by_xpath('//*[@id="messageInput"]').send_keys(Keys.ENTER)
 
-
     def tearDown(self):
         self.driver.close()
 
